@@ -2,17 +2,17 @@ package com.softwaresolutions.cgpaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText edit1,edit2,edit3,edit4,edit5,edit6,edit7,edit8;
-    private Button bt1,bt2;
-    private TextView tv;
+    private Button bt1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
         edit8 = findViewById(R.id.ed8);
 
         bt1 = findViewById(R.id.btn1);
-        bt2 = findViewById(R.id.btn2);
-
-        tv = findViewById(R.id.tv1);
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,14 +43,8 @@ public class MainActivity extends AppCompatActivity {
                 double h=Double.parseDouble(edit8.getText().toString());
 
                 double i=((a*5)+(b*5)+(c*5)+(d*15)+(e*15)+(f*20)+(g*25)+(h*10))/100;
-
-                tv.setText(String.valueOf(i));
-            }
-        });
-
-        bt2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                Result_Data rd = new Result_Data(i);
+                Intent in = new Intent(MainActivity.this, Result.class);
                 edit1.setText(null);
                 edit2.setText(null);
                 edit3.setText(null);
@@ -62,9 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 edit6.setText(null);
                 edit7.setText(null);
                 edit8.setText(null);
-                tv.setText(null);
+                startActivity(in);
             }
         });
-
     }
 }
