@@ -44,21 +44,27 @@ public class MainActivity extends AppCompatActivity {
                         double h = Double.parseDouble(edit8.getText().toString());
                         double i = ((a * 5) + (b * 5) + (c * 5) + (d * 15) + (e * 15) + (f * 20) + (g * 25) + (h * 10)) / 100;
                         Result_Data rd = new Result_Data(i);
+                        Intent in = new Intent(MainActivity.this, Result.class);
+                        edit1.setText(null);
+                        edit2.setText(null);
+                        edit3.setText(null);
+                        edit4.setText(null);
+                        edit5.setText(null);
+                        edit6.setText(null);
+                        edit7.setText(null);
+                        edit8.setText(null);
+                        startActivity(in);
+                        MainActivity.super.finish();
                     }catch (Exception e) {
                         Error_Data er = new Error_Data( e.getMessage());
+                        openDialog();
                     }
-                    Intent in = new Intent(MainActivity.this, Result.class);
-                    edit1.setText(null);
-                    edit2.setText(null);
-                    edit3.setText(null);
-                    edit4.setText(null);
-                    edit5.setText(null);
-                    edit6.setText(null);
-                    edit7.setText(null);
-                    edit8.setText(null);
-                    startActivity(in);
-                    MainActivity.super.finish();
                 }
             });
+    }
+
+    public void openDialog(){
+        ShowDialog sd = new ShowDialog();
+        sd.show(getSupportFragmentManager(), "show dialog");
     }
 }
