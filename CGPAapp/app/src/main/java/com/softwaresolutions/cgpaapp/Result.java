@@ -34,6 +34,7 @@ public class Result extends AppCompatActivity {
                 t.setText(null);
                 Intent in = new Intent(Result.this, MainActivity.class);
                 startActivity(in);
+                Result.super.finish();
             }
         });
     }

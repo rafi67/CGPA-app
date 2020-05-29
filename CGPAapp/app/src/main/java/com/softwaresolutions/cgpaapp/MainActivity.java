@@ -46,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         double i = ((a * 5) + (b * 5) + (c * 5) + (d * 15) + (e * 15) + (f * 20) + (g * 25) + (h * 10)) / 100;
                         Result_Data rd = new Result_Data(i);
                     }catch (Exception e) {
-                        String i = e.getMessage();
-                        Error_Data er = new Error_Data(i);
+                        Error_Data er = new Error_Data( e.getMessage());
                     }
                     Intent in = new Intent(MainActivity.this, Result.class);
                     edit1.setText(null);
@@ -59,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     edit7.setText(null);
                     edit8.setText(null);
                     startActivity(in);
+                    MainActivity.super.finish();
                 }
             });
     }
