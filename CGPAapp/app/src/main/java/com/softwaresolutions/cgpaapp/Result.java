@@ -18,8 +18,15 @@ public class Result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
         t = findViewById(R.id.tv);
-        Double y = Result_Data.r;
-        t.setText(String.valueOf(y));
+        double y = Result_Data.r;
+        String Y = Error_Data.r;
+        if(Y!=null){
+            t.setText(Y);
+        }
+        else {
+            String r = "Your GPA is ";
+            t.setText(r + String.valueOf(y));
+        }
         back = findViewById(R.id.btnback);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

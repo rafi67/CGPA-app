@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,31 +31,35 @@ public class MainActivity extends AppCompatActivity {
 
         bt1 = findViewById(R.id.btn1);
 
-        bt1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                double a=Double.parseDouble(edit1.getText().toString());
-                double b=Double.parseDouble(edit2.getText().toString());
-                double c=Double.parseDouble(edit3.getText().toString());
-                double d=Double.parseDouble(edit4.getText().toString());
-                double e=Double.parseDouble(edit5.getText().toString());
-                double f=Double.parseDouble(edit6.getText().toString());
-                double g=Double.parseDouble(edit7.getText().toString());
-                double h=Double.parseDouble(edit8.getText().toString());
-
-                double i=((a*5)+(b*5)+(c*5)+(d*15)+(e*15)+(f*20)+(g*25)+(h*10))/100;
-                Result_Data rd = new Result_Data(i);
-                Intent in = new Intent(MainActivity.this, Result.class);
-                edit1.setText(null);
-                edit2.setText(null);
-                edit3.setText(null);
-                edit4.setText(null);
-                edit5.setText(null);
-                edit6.setText(null);
-                edit7.setText(null);
-                edit8.setText(null);
-                startActivity(in);
-            }
-        });
+            bt1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        double a = Double.parseDouble(edit1.getText().toString());
+                        double b = Double.parseDouble(edit2.getText().toString());
+                        double c = Double.parseDouble(edit3.getText().toString());
+                        double d = Double.parseDouble(edit4.getText().toString());
+                        double e = Double.parseDouble(edit5.getText().toString());
+                        double f = Double.parseDouble(edit6.getText().toString());
+                        double g = Double.parseDouble(edit7.getText().toString());
+                        double h = Double.parseDouble(edit8.getText().toString());
+                        double i = ((a * 5) + (b * 5) + (c * 5) + (d * 15) + (e * 15) + (f * 20) + (g * 25) + (h * 10)) / 100;
+                        Result_Data rd = new Result_Data(i);
+                    }catch (Exception e) {
+                        String i = e.getMessage();
+                        Error_Data er = new Error_Data(i);
+                    }
+                    Intent in = new Intent(MainActivity.this, Result.class);
+                    edit1.setText(null);
+                    edit2.setText(null);
+                    edit3.setText(null);
+                    edit4.setText(null);
+                    edit5.setText(null);
+                    edit6.setText(null);
+                    edit7.setText(null);
+                    edit8.setText(null);
+                    startActivity(in);
+                }
+            });
     }
 }
