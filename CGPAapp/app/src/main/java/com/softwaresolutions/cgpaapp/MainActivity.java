@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
                         edit7.setText(null);
                         edit8.setText(null);
                         startActivity(in);
-                        MainActivity.super.finish();
+                        //MainActivity.super.finish();
+                        finish();
                     }catch (Exception e) {
                         Error_Data er = new Error_Data( e.getMessage());
                         openDialog();
